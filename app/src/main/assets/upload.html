@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Androkiosk</title>
+<style>
+:root{--bg:#000;--surface:#0f0f0f;--line:#262626;--text:#fff;--muted:#9b9b9b;--accent:#78c257;--error:#e08a82}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;min-height:100dvh;background:var(--bg);color:var(--text);
+font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+display:flex;justify-content:center;padding:40px 20px}
+main{width:100%;max-width:520px}
+h1{font-size:22px;font-weight:600;letter-spacing:-.02em;margin:0}
+p.sub{color:var(--muted);font-size:14px;margin:6px 0 28px}
+section{display:none}section.on{display:block}
+#code{width:100%;background:var(--surface);color:var(--text);border:1px solid var(--line);
+border-radius:14px;padding:18px;font-size:30px;font-weight:600;text-align:center;
+letter-spacing:.4em;text-indent:.4em;font-family:inherit;outline:none;
+transition:border-color .18s,box-shadow .18s}
+#code::placeholder{color:#3a3a3a;letter-spacing:.4em}
+#code:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(120,194,87,.18)}
+#code.bad{border-color:var(--error);box-shadow:0 0 0 3px rgba(224,138,130,.18)}
+.hint{margin-top:12px;font-size:13px;color:var(--muted);text-align:center;min-height:20px}
+.hint.bad{color:var(--error)}
+#drop{display:block;border:1px solid var(--line);border-radius:16px;padding:44px 24px;text-align:center;
+cursor:pointer;outline:none;transition:border-color .18s,background .18s}
+#drop:hover,#drop.over,#drop:focus-visible{border-color:var(--accent);background:rgba(120,194,87,.06)}
+#drop strong{display:block;font-size:16px;font-weight:500}
+#drop span{color:var(--muted);font-size:13px}
+input[type=file]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+ul{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+li{background:var(--surface);border-radius:12px;padding:12px 14px}
+.row{display:flex;align-items:center;gap:12px}
+.name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}
+.state{font-size:12px;color:var(--muted);flex-shrink:0}
+.state.done{color:var(--accent)}
+.state.fail{color:var(--error)}
+.bar{height:3px;border-radius:2px;background:var(--line);margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .15s linear}
+li.done .bar{display:none}
+</style>
+</head>
+<body>
+<main>
+<h1>Androkiosk</h1>
+<p class="sub" id="sub">{{enterPin}}</p>
+
+<section id="gate" class="on">
+<input id="code" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="0000" autocomplete="off" autofocus>
+<div class="hint" id="hint"></div>
+</section>
+
+<section id="send">
+<label id="drop" for="pick" tabindex="0">
+<strong>{{choose}}</strong>
+<span>{{drag}}</span>
+</label>
+<input id="pick" type="file" multiple accept="image/*,video/*">
+<ul id="list"></ul>
+</section>
+</main>
+<script>
+const T={sendFiles:"{{sendFiles}}",wrongPin:"{{wrongPin}}",offline:"{{offline}}",sent:"{{sent}}",failed:"{{failed}}",rejected:"{{rejected}}"};
+const code=document.getElementById('code'),hint=document.getElementById('hint'),sub=document.getElementById('sub'),
+gate=document.getElementById('gate'),send=document.getElementById('send'),
+drop=document.getElementById('drop'),pick=document.getElementById('pick'),list=document.getElementById('list');
+let pin='',active=0,done=0;
+
+code.addEventListener('input',()=>{
+code.value=code.value.replace(/\D/g,'');
+code.classList.remove('bad');hint.classList.remove('bad');hint.textContent='';
+if(code.value.length===4)verify(code.value)});
+
+async function verify(value){
+code.blur();
+const res=await fetch('/verify',{method:'POST',body:value}).catch(()=>null);
+if(res&&res.ok){pin=value;gate.classList.remove('on');send.classList.add('on');
+sub.textContent=T.sendFiles;pick.focus()}
+else{code.classList.add('bad');hint.classList.add('bad');
+hint.textContent=res&&res.status===401?T.wrongPin:T.offline;
+code.value='';setTimeout(()=>code.focus(),400)}}
+
+const stop=e=>{e.preventDefault();e.stopPropagation()};
+['dragenter','dragover'].forEach(t=>drop.addEventListener(t,e=>{stop(e);drop.classList.add('over')}));
+['dragleave','drop'].forEach(t=>drop.addEventListener(t,e=>{stop(e);drop.classList.remove('over')}));
+drop.addEventListener('drop',e=>queue(e.dataTransfer.files));
+drop.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick.click()}});
+pick.addEventListener('change',()=>{queue(pick.files);pick.value=''});
+
+function queue(files){[...files].forEach(upload)}
+
+function upload(file){
+const li=document.createElement('li');
+li.innerHTML='<div class="row"><div class="name"></div><div class="state">0%</div></div><div class="bar"><i></i></div>';
+li.querySelector('.name').textContent=file.name;
+const state=li.querySelector('.state'),bar=li.querySelector('.bar i');
+list.prepend(li);active++;
+const data=new FormData();data.append('file',file,file.name);
+const xhr=new XMLHttpRequest();
+xhr.open('POST','/upload');
+xhr.setRequestHeader('X-Upload-Pin',pin);
+xhr.upload.onprogress=e=>{if(e.lengthComputable){const p=Math.round(e.loaded/e.total*100);
+state.textContent=p+'%';bar.style.width=p+'%'}};
+xhr.onload=()=>{active--;
+if(xhr.status>=200&&xhr.status<300){li.classList.add('done');state.textContent=T.sent;state.className='state done';done++}
+else{state.textContent=xhr.status===401?T.rejected:T.failed;state.className='state fail'}};
+xhr.onerror=()=>{active--;state.textContent=T.failed;state.className='state fail'};
+xhr.send(data)}
+
+window.addEventListener('beforeunload',e=>{if(active){e.preventDefault();e.returnValue=''}});
+</script>
+</body>
+</html>

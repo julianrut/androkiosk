@@ -1,4 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Androkiosk</string>
+    <string name="app_name" translatable="false">Androkiosk</string>
+
+    <string name="version">Version %1$s</string>
+
+    <string name="section_general">General</string>
+    <string name="language">Language</string>
+
+    <string name="settings">Settings</string>
+    <string name="sequences">Sequences</string>
+    <string name="new_sequence">New sequence</string>
+    <string name="sequence_name">Name</string>
+    <string name="sequences_empty">No sequences yet</string>
+    <string name="sequences_empty_hint">Create one to start showing images and videos on this display.</string>
+    <string name="sequence_empty">Nothing in this sequence</string>
+    <string name="sequence_empty_hint">Add images and videos, then set how long each one stays on screen.</string>
+    <string name="add_media">Add media</string>
+    <string name="transition">Transition</string>
+    <string name="transition_enabled">Enabled</string>
+    <string name="transition_length">Length</string>
+    <string name="transition_crossfade">Crossfade</string>
+    <string name="transition_fade">Fade</string>
+    <string name="transition_slide_right">Slide right</string>
+    <string name="transition_slide_left">Slide left</string>
+    <string name="transition_slide_down">Slide down</string>
+    <string name="transition_slide_up">Slide up</string>
+    <string name="seconds_short">%1$s s</string>
+    <string name="from_files">Files</string>
+    <string name="from_gallery">Gallery</string>
+    <string name="from_network">Another device</string>
+    <string name="receive_title">Send from another device</string>
+    <string name="receive_pin_label">PIN</string>
+    <string name="web_enter_pin">Enter the PIN shown on the display.</string>
+    <string name="web_send_files">Send images and videos to this display.</string>
+    <string name="web_choose">Choose files</string>
+    <string name="web_drag">or drag them here</string>
+    <string name="web_wrong_pin">Wrong PIN</string>
+    <string name="web_offline">Connection lost</string>
+    <string name="web_sent">Sent</string>
+    <string name="web_failed">Failed</string>
+    <string name="web_rejected">Rejected</string>
+    <string name="receive_waiting">Open this address on the same Wi-Fi</string>
+    <string name="receive_no_network">Connect this device to Wi-Fi to receive files.</string>
+    <string name="play">Play</string>
+    <string name="rename">Rename</string>
+    <string name="delete">Delete</string>
+    <string name="remove">Remove</string>
+    <string name="move_up">Move up</string>
+    <string name="move_down">Move down</string>
+    <string name="more_options">More options</string>
+    <string name="create">Create</string>
+    <string name="duration">Duration</string>
+    <string name="set_duration">Set duration</string>
+    <string name="seconds">Seconds</string>
+    <string name="duration_full_hint">Set to 0 for full length</string>
+    <string name="duration_full_known">Full length - %1$ds</string>
+    <string name="duration_error_video">Enter 0 to 3600 seconds</string>
+    <string name="duration_seconds">%1$ds</string>
+    <string name="duration_full">Full length</string>
+    <string name="duration_error">Enter 1 to 3600 seconds</string>
+    <string name="back">Back</string>
+
+    <string name="section_kiosk">Kiosk</string>
+    <string name="section_lockdown">Lockdown</string>
+    <string name="kiosk_mode">Kiosk mode</string>
+    <string name="kiosk_mode_summary">Run as the home screen, locks everything else on the device.</string>
+    <string name="home_app">Home app</string>
+    <string name="home_app_ready">Set</string>
+    <string name="home_app_missing">Choose</string>
+    <string name="triple_back">Triple press back</string>
+    <string name="triple_back_summary">Press back three times to leave a playing sequence</string>
+    <string name="gestures">System gestures</string>
+    <string name="gestures_blocked">Permission granted</string>
+    <string name="gestures_open">Grant access</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="section_pin">Pin</string>
+    <string name="app_pin">Security PIN</string>
+    <string name="app_pin_summary">4-digit minimum pin to secure access in the app</string>
+    <string name="app_pin_set">Set</string>
+    <string name="app_pin_unset">Not set</string>
+    <string name="pin_label">PIN</string>
+    <string name="pin_repeat_label">Repeat PIN</string>
+    <string name="pin_create_title">Set PIN</string>
+    <string name="pin_change_title">Change PIN</string>
+    <string name="pin_verify_title">Enter PIN</string>
+    <string name="pin_length_error">Use 4 to 8 digits</string>
+    <string name="pin_wrong_error">Incorrect PIN</string>
+    <string name="pin_remove">Remove</string>
+    <string name="pin_change">Change</string>
+    <string name="continue_action">Continue</string>
+
+    <string name="pinning_notice_title">Kiosk mode is on</string>
+    <string name="pinning_notice_body">Androkiosk is now the home screen and stays pinned to the foreground, so the launcher, notifications and recent apps are out of reach.</string>
+    <string name="pinning_notice_hint">One gap remains: holding Back and Overview together unpins the app. To require your device passcode before that works, open Settings → Security → Screen pinning and turn on asking for a PIN before unpinning.</string>
+    <string name="pinning_notice_dismiss">Don\'t show again</string>
+    <string name="got_it">Got it</string>
+
+    <plurals name="receive_count">
+        <item quantity="one">%1$d file added</item>
+        <item quantity="other">%1$d files added</item>
+    </plurals>
+
+    <plurals name="item_count">
+        <item quantity="one">%1$d item</item>
+        <item quantity="other">%1$d items</item>
+    </plurals>
 </resources>

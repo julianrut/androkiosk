@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="version">Wersja %1$s</string>
+
+    <string name="section_general">Ogólne</string>
+    <string name="language">Język</string>
+
+    <string name="settings">Ustawienia</string>
+    <string name="sequences">Sekwencje</string>
+    <string name="new_sequence">Nowa sekwencja</string>
+    <string name="sequence_name">Nazwa</string>
+    <string name="sequences_empty">Nie masz jeszcze sekwencji</string>
+    <string name="sequences_empty_hint">Utwórz pierwszą, aby wyświetlać zdjęcia i filmy na tym ekranie.</string>
+    <string name="sequence_empty">Ta sekwencja jest pusta</string>
+    <string name="sequence_empty_hint">Dodaj zdjęcia i filmy, a potem ustaw, jak długo każde z nich ma być widoczne.</string>
+    <string name="add_media">Dodaj multimedia</string>
+    <string name="transition">Przejście</string>
+    <string name="transition_enabled">Włączone</string>
+    <string name="transition_length">Czas trwania</string>
+    <string name="transition_crossfade">Przenikanie</string>
+    <string name="transition_fade">Zanikanie</string>
+    <string name="transition_slide_right">Wjazd w prawo</string>
+    <string name="transition_slide_left">Wjazd w lewo</string>
+    <string name="transition_slide_down">Wjazd w dół</string>
+    <string name="transition_slide_up">Wjazd w górę</string>
+    <string name="seconds_short">%1$s s</string>
+    <string name="from_files">Pliki</string>
+    <string name="from_gallery">Galeria</string>
+    <string name="from_network">Inne urządzenie</string>
+    <string name="receive_title">Wyślij z innego urządzenia</string>
+    <string name="receive_pin_label">PIN</string>
+    <string name="web_enter_pin">Wpisz PIN wyświetlony na ekranie.</string>
+    <string name="web_send_files">Wyślij zdjęcia i filmy na ten ekran.</string>
+    <string name="web_choose">Wybierz pliki</string>
+    <string name="web_drag">lub przeciągnij je tutaj</string>
+    <string name="web_wrong_pin">Nieprawidłowy PIN</string>
+    <string name="web_offline">Utracono połączenie</string>
+    <string name="web_sent">Wysłano</string>
+    <string name="web_failed">Błąd</string>
+    <string name="web_rejected">Odrzucono</string>
+    <string name="receive_waiting">Otwórz ten adres w tej samej sieci Wi-Fi</string>
+    <string name="receive_no_network">Połącz to urządzenie z Wi-Fi, aby odbierać pliki.</string>
+    <string name="play">Odtwórz</string>
+    <string name="rename">Zmień nazwę</string>
+    <string name="delete">Usuń</string>
+    <string name="remove">Usuń</string>
+    <string name="move_up">Przenieś w górę</string>
+    <string name="move_down">Przenieś w dół</string>
+    <string name="more_options">Więcej opcji</string>
+    <string name="create">Utwórz</string>
+    <string name="duration">Czas wyświetlania</string>
+    <string name="set_duration">Ustaw czas</string>
+    <string name="seconds">Sekundy</string>
+    <string name="duration_full_hint">Wpisz 0, aby odtworzyć całość</string>
+    <string name="duration_full_known">Całość - %1$d s</string>
+    <string name="duration_error_video">Podaj od 0 do 3600 sekund</string>
+    <string name="duration_seconds">%1$d s</string>
+    <string name="duration_full">Całość</string>
+    <string name="duration_error">Podaj od 1 do 3600 sekund</string>
+    <string name="back">Wstecz</string>
+
+    <string name="section_kiosk">Kiosk</string>
+    <string name="section_lockdown">Blokada</string>
+    <string name="kiosk_mode">Tryb kiosku</string>
+    <string name="kiosk_mode_summary">Działa jako ekran główny i blokuje resztę urządzenia.</string>
+    <string name="home_app">Ekran główny</string>
+    <string name="home_app_ready">Ustawiono</string>
+    <string name="home_app_missing">Wybierz</string>
+    <string name="triple_back">Trzykrotne wciśnięcie Wstecz</string>
+    <string name="triple_back_summary">Naciśnij Wstecz trzy razy, aby wyjść z odtwarzanej sekwencji</string>
+    <string name="gestures">Gesty systemowe</string>
+    <string name="gestures_blocked">Uprawnienie przyznane</string>
+    <string name="gestures_open">Przyznaj uprawnienie</string>
+
+    <string name="cancel">Anuluj</string>
+    <string name="save">Zapisz</string>
+    <string name="section_pin">PIN</string>
+    <string name="app_pin">PIN zabezpieczający</string>
+    <string name="app_pin_summary">Minimum 4 cyfry, chroni dostęp do aplikacji</string>
+    <string name="app_pin_set">Ustawiony</string>
+    <string name="app_pin_unset">Nie ustawiono</string>
+    <string name="pin_label">PIN</string>
+    <string name="pin_repeat_label">Powtórz PIN</string>
+    <string name="pin_create_title">Ustaw PIN</string>
+    <string name="pin_change_title">Zmień PIN</string>
+    <string name="pin_verify_title">Podaj PIN</string>
+    <string name="pin_length_error">Podaj od 4 do 8 cyfr</string>
+    <string name="pin_wrong_error">Nieprawidłowy PIN</string>
+    <string name="pin_remove">Usuń</string>
+    <string name="pin_change">Zmień</string>
+    <string name="continue_action">Dalej</string>
+
+    <string name="pinning_notice_title">Tryb kiosku włączony</string>
+    <string name="pinning_notice_body">Androkiosk działa teraz jako ekran główny i pozostaje przypięty na wierzchu, więc pulpit, powiadomienia i ostatnie aplikacje są poza zasięgiem.</string>
+    <string name="pinning_notice_hint">Została jedna luka: przytrzymanie przycisków Wstecz i Przegląd jednocześnie odpina aplikację. Aby wymagało to kodu blokady ekranu, otwórz Ustawienia → Zabezpieczenia → Przypinanie ekranu i włącz pytanie o PIN przed odpięciem.</string>
+    <string name="pinning_notice_dismiss">Nie pokazuj ponownie</string>
+    <string name="got_it">Rozumiem</string>
+
+    <plurals name="receive_count">
+        <item quantity="one">Dodano %1$d plik</item>
+        <item quantity="few">Dodano %1$d pliki</item>
+        <item quantity="many">Dodano %1$d plików</item>
+        <item quantity="other">Dodano %1$d pliku</item>
+    </plurals>
+
+    <plurals name="item_count">
+        <item quantity="one">%1$d element</item>
+        <item quantity="few">%1$d elementy</item>
+        <item quantity="many">%1$d elementów</item>
+        <item quantity="other">%1$d elementu</item>
+    </plurals>
+</resources>
