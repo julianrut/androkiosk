@@ -9,6 +9,8 @@ import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.androkiosk.data.KioskSettings
+import com.androkiosk.ui.browser.BrowserScreen
+import com.androkiosk.ui.browser.WebScreen
 import com.androkiosk.ui.player.PlayerScreen
 import com.androkiosk.ui.sequences.SequenceEditorScreen
 import com.androkiosk.ui.sequences.SequenceViewModel
@@ -17,9 +19,11 @@ import com.androkiosk.ui.sequences.SequencesScreen
 private sealed interface Screen {
     data object Home : Screen
     data object Sequences : Screen
+    data object Browser : Screen
     data object Settings : Screen
     data class Editor(val id: String) : Screen
     data class Player(val id: String) : Screen
+    data class Web(val url: String) : Screen
 }
 
 @Composable
@@ -29,16 +33,18 @@ fun Root(settings: KioskSettings, kiosk: KioskViewModel, onPlayingChange: (Boole
     val stack = remember { mutableStateListOf<Screen>(Screen.Home) }
     val pop: () -> Unit = { if (stack.size > 1) { stack.removeAt(stack.lastIndex) } }
 
-    val playing = stack.last() is Screen.Player
+    val top = stack.last()
+    val playing = top is Screen.Player || top is Screen.Web
     LaunchedEffect(playing) { onPlayingChange(playing) }
 
     BackHandler(stack.size > 1 && !playing) { pop() }
 
-    when (val current = stack.last()) {
+    when (val current = top) {
         Screen.Home -> HomeScreen(
             settings = settings,
             viewModel = kiosk,
             onOpenSequences = { stack.add(Screen.Sequences) },
+            onOpenBrowser = { stack.add(Screen.Browser) },
             onOpenSettings = { stack.add(Screen.Settings) },
         )
 
@@ -51,6 +57,17 @@ fun Root(settings: KioskSettings, kiosk: KioskViewModel, onPlayingChange: (Boole
         )
 
         Screen.Settings -> SettingsScreen(settings, kiosk, pop)
+
+        Screen.Browser -> BrowserScreen(
+            initialUrl = settings.browserUrl,
+            onBack = pop,
+            onStart = { url ->
+                kiosk.setBrowserUrl(url)
+                stack.add(Screen.Web(url))
+            },
+        )
+
+        is Screen.Web -> WebScreen(current.url, settings, kiosk, pop)
 
         is Screen.Editor -> {
             val sequence = sequences?.firstOrNull { it.id == current.id }

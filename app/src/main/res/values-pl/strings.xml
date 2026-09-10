@@ -7,6 +7,9 @@
 
     <string name="settings">Ustawienia</string>
     <string name="sequences">Sekwencje</string>
+    <string name="browser">Przeglądarka</string>
+    <string name="browser_url">Adres</string>
+    <string name="browser_start">Uruchom przeglądarkę</string>
     <string name="new_sequence">Nowa sekwencja</string>
     <string name="sequence_name">Nazwa</string>
     <string name="sequences_empty">Nie masz jeszcze sekwencji</string>

@@ -29,6 +29,10 @@ class KioskViewModel(private val preferences: KioskPreferences) : ViewModel() {
         viewModelScope.launch { preferences.setTripleBack(enabled) }
     }
 
+    fun setBrowserUrl(url: String) {
+        viewModelScope.launch { preferences.setBrowserUrl(url) }
+    }
+
     fun setPin(pin: String) {
         viewModelScope.launch { preferences.setPin(PinCrypto.digest(pin)) }
     }

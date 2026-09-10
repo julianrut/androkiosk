@@ -31,6 +31,7 @@ fun HomeScreen(
     settings: KioskSettings,
     viewModel: KioskViewModel,
     onOpenSequences: () -> Unit,
+    onOpenBrowser: () -> Unit,
     onOpenSettings: () -> Unit,
 ) {
     var verifying by remember { mutableStateOf(false) }
@@ -72,6 +73,7 @@ fun HomeScreen(
                 verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 ActionTile(stringResource(R.string.sequences), R.drawable.ic_sequences, onOpenSequences)
+                ActionTile(stringResource(R.string.browser), R.drawable.ic_browser, onOpenBrowser)
                 ActionTile(stringResource(R.string.settings), R.drawable.ic_settings, requestSettings)
             }
         }

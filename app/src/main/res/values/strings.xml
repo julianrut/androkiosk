@@ -9,6 +9,9 @@
 
     <string name="settings">Settings</string>
     <string name="sequences">Sequences</string>
+    <string name="browser">Browser</string>
+    <string name="browser_url">Address</string>
+    <string name="browser_start">Start browser</string>
     <string name="new_sequence">New sequence</string>
     <string name="sequence_name">Name</string>
     <string name="sequences_empty">No sequences yet</string>

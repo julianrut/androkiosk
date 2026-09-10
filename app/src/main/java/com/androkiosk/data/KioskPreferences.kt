@@ -17,11 +17,13 @@ private val PinningNoticeHidden = booleanPreferencesKey("pinning_notice_hidden")
 private val PinSalt = stringPreferencesKey("pin_salt")
 private val PinMac = stringPreferencesKey("pin_mac")
 private val TripleBack = booleanPreferencesKey("triple_back")
+private val BrowserUrl = stringPreferencesKey("browser_url")
 
 data class KioskSettings(
     val kioskEnabled: Boolean,
     val pinningNoticeHidden: Boolean,
     val tripleBack: Boolean,
+    val browserUrl: String,
     val pin: PinDigest?,
 )
 
@@ -33,6 +35,7 @@ class KioskPreferences(private val context: Context) {
             kioskEnabled = stored[KioskEnabled] == true,
             pinningNoticeHidden = stored[PinningNoticeHidden] == true,
             tripleBack = stored[TripleBack] != false,
+            browserUrl = stored[BrowserUrl].orEmpty(),
             pin = if (salt != null && mac != null && PinCrypto.isReady()) PinDigest(salt, mac) else null,
         )
     }
@@ -47,6 +50,10 @@ class KioskPreferences(private val context: Context) {
 
     suspend fun setTripleBack(enabled: Boolean) {
         context.preferences.edit { it[TripleBack] = enabled }
+    }
+
+    suspend fun setBrowserUrl(url: String) {
+        context.preferences.edit { it[BrowserUrl] = url }
     }
 
     suspend fun setPin(digest: PinDigest?) {
