@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Androkiosk</title>
+    <meta name="description" content="Turn an Android phone or tablet into a kiosk display.">
+    <link rel="canonical" href="https://julianrut.github.io/androkiosk/">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Androkiosk">
+    <meta property="og:title" content="Androkiosk">
+    <meta property="og:description" content="Turn an Android phone or tablet into a kiosk display.">
+    <meta property="og:url" content="https://julianrut.github.io/androkiosk/">
+    <meta property="og:image" content="https://julianrut.github.io/androkiosk/media/icon_cropped.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1000">
+    <meta property="og:image:height" content="1000">
+    <meta property="og:image:alt" content="Androkiosk icon">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" href="media/icon_cropped.png" type="image/png">
+    <link rel="apple-touch-icon" href="media/icon_cropped.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800&display=swap">
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#000000',
+                        muted: '#5b5f57',
+                        line: '#e5e7e2',
+                        brand: '#78c257',
+                    },
+                    fontFamily: {
+                        sans: ['Overpass', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="flex min-h-dvh flex-col bg-white font-sans text-ink antialiased">
+    <main class="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-16 px-6 pt-14 sm:px-10 lg:flex-row lg:items-end lg:justify-between lg:pt-20">
+        <div class="max-w-xl lg:pb-16">
+            <h1 class="text-[clamp(3.5rem,10vw,6.5rem)] font-extrabold leading-[0.9] tracking-[-0.04em]">Androkiosk</h1>
+            <p class="mt-5 max-w-[24ch] text-[clamp(1.375rem,2.6vw,1.75rem)] leading-snug">Turn an Android phone or tablet into a kiosk display.</p>
+
+            <dl class="mt-12 grid gap-x-10 gap-y-7 sm:grid-cols-2">
+                <div>
+                    <dt class="font-semibold">Sequences</dt>
+                    <dd class="mt-1 text-muted">Loop images and videos, with your own timing, order and transitions.</dd>
+                </div>
+                <div>
+                    <dt class="font-semibold">Browser</dt>
+                    <dd class="mt-1 text-muted">Display a full screen web view.</dd>
+                </div>
+                <div>
+                    <dt class="font-semibold">Kiosk mode</dt>
+                    <dd class="mt-1 text-muted">Locks the app, so that visitors cannot leave the kiosk view.</dd>
+                </div>
+                <div>
+                    <dt class="font-semibold">Easy file transfer</dt>
+                    <dd class="mt-1 text-muted">Drop in files from a laptop or phone on the same Wi-Fi.</dd>
+                </div>
+            </dl>
+
+            <div class="mt-12 flex flex-col gap-3 sm:flex-row">
+                <a href="https://github.com/julianrut/androkiosk/releases/download/0.1.0/Androkiosk-0.1.0.apk"
+                   class="inline-flex h-12 items-center justify-center rounded-2xl bg-ink px-6 pt-0.5 font-semibold text-white transition-colors duration-150 hover:bg-brand hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink">Download APK</a>
+                <a target="_blank" href="https://github.com/julianrut/androkiosk"
+                   class="inline-flex h-12 items-center justify-center rounded-2xl border border-line px-6 pt-0.5 font-semibold transition-colors duration-150 hover:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"><i class="fa-brands fa-github"></i>&nbsp;&nbsp;View on GitHub</a>
+            </div>
+            <p class="mt-5 text-[0.9375rem] text-muted">Free and open source. Android 7.0 and newer. Made with ❤️ by Julian R.</p>
+        </div>
+
+        <div class="relative isolate h-72 w-fit self-center sm:h-80 lg:h-[27.5rem] lg:self-end" aria-hidden="true">
+            <div class="absolute left-[14.4%] top-[8.6%] h-[67.7%] w-[71.2%] bg-brand"></div>
+            <img draggable="false" src="media/frame.png" width="401" height="662" alt="" class="relative block h-full w-auto">
+        </div>
+    </main>
+    <div class="h-px w-full bg-line"></div>
+    <div class="h-10"></div>
+</body>
+</html>

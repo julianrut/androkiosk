@@ -15,6 +15,8 @@ Requires JDK 17 or newer and the Android SDK. Point the build at your SDK with `
 
 Icons from [Font Awesome Free](https://fontawesome.com) 7.3.1, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
+The Android robot is reproduced or modified from work created and shared by Google and used according to terms described in the [Creative Commons 3.0 Attribution License](https://creativecommons.org/licenses/by/3.0/).
+
 ## License
 
 MIT
