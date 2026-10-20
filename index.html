@@ -35,9 +35,21 @@
                         muted: '#5b5f57',
                         line: '#e5e7e2',
                         brand: '#78c257',
+                        heart: '#e5484d',
                     },
                     fontFamily: {
                         sans: ['Overpass', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                    },
+                    keyframes: {
+                        beat: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '15%': { transform: 'scale(1.25)' },
+                            '30%': { transform: 'scale(1)' },
+                            '45%': { transform: 'scale(1.15)' },
+                        },
+                    },
+                    animation: {
+                        beat: 'beat 1.1s ease-in-out infinite',
                     },
                 },
             },
@@ -45,7 +57,7 @@
     </script>
 </head>
 <body class="flex min-h-dvh flex-col bg-white font-sans text-ink antialiased">
-    <main class="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-16 px-6 pt-14 sm:px-10 lg:flex-row lg:items-end lg:justify-between lg:pt-20">
+    <main class="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-16 px-6 pt-14 sm:px-10 lg:flex-row lg:items-end lg:justify-between lg:pt-16">
         <div class="max-w-xl lg:pb-16">
             <h1 class="text-[clamp(3.5rem,10vw,6.5rem)] font-extrabold leading-[0.9] tracking-[-0.04em]">Androkiosk</h1>
             <p class="mt-5 max-w-[24ch] text-[clamp(1.375rem,2.6vw,1.75rem)] leading-snug">Turn an Android device into a fully-functioning, professional, kiosk display.</p>
@@ -74,8 +86,10 @@
                    class="inline-flex h-12 items-center justify-center rounded-2xl bg-ink px-6 pt-0.5 font-semibold text-white transition-colors duration-150 hover:bg-brand hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink">Download APK</a>
                 <a target="_blank" href="https://github.com/julianrut/androkiosk"
                    class="inline-flex h-12 items-center justify-center rounded-2xl border border-line px-6 pt-0.5 font-semibold transition-colors duration-150 hover:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"><i class="fa-brands fa-github"></i>&nbsp;&nbsp;View on GitHub</a>
+                <a target="_blank" href="https://github.com/sponsors/julianrut"
+                   class="group inline-flex h-12 items-center justify-center rounded-2xl border border-line px-6 pt-0.5 font-semibold transition-colors duration-150 hover:border-heart hover:bg-heart/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-heart"><i class="fa-solid fa-heart -mt-0.5 text-heart group-hover:animate-beat"></i>&nbsp;&nbsp;Sponsor</a>
             </div>
-            <p class="mt-5 text-[0.9375rem] text-muted">Free and open source. Android 7.0 and newer. Made with ❤️ by Julian R.</p>
+            <p class="mt-5 text-[0.9375rem] text-muted">Free and open source, kept going by <a target="_blank" href="https://github.com/sponsors/julianrut" class="font-semibold text-ink underline decoration-heart/40 decoration-2 underline-offset-4 transition-colors hover:decoration-heart">sponsors like you</a>. Android 7.0 and newer.</p>
         </div>
 
         <div class="relative isolate h-72 w-fit self-center sm:h-80 lg:h-[27.5rem] lg:self-end" aria-hidden="true">
